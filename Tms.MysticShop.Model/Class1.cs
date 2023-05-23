@@ -8,6 +8,6 @@ namespace Tms.MysticShop.Model
 {
     public class Class1
     {
-        public int call;
+        public int call1;
     }
 }
