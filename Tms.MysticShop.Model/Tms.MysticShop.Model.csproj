@@ -51,13 +51,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abtract\Audittable.cs" />
+    <Compile Include="Abtract\IAudittable.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="Models\Bill.cs" />
+    <Compile Include="Models\BillDetail.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Color.cs" />
+    <Compile Include="Models\Image.cs" />
+    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ProductDetail.cs" />
+    <Compile Include="Models\Size.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
