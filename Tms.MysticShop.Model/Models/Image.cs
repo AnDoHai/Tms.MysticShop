@@ -15,7 +15,6 @@ namespace Tms.MysticShop.Model.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ImageID { get; set; }
-        [Required]
         public string ImageLink { get; set; }
         [Required]
         public int ProductDetailID { get; set; }

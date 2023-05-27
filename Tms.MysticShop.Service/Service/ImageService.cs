@@ -4,9 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tms.MysticShop.Service
+namespace Tms.MysticShop.Service.Service
 {
-    public class Class1
+    public interface IImageService
+    {
+
+    }
+    public class ImageService : IImageService
     {
     }
 }

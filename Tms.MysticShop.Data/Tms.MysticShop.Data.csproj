@@ -51,11 +51,41 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Infrastructure\DbFactory.cs" />
     <Compile Include="Infrastructure\Disposeable.cs" />
     <Compile Include="Infrastructure\IDbFactory.cs" />
+    <Compile Include="Infrastructure\InitOfWork.cs" />
     <Compile Include="Infrastructure\IRepository.cs" />
     <Compile Include="Infrastructure\IUnitOfWork.cs" />
+    <Compile Include="Infrastructure\RepositoryBase.cs" />
+    <Compile Include="Migrations\202305270300487_InitialDB.cs" />
+    <Compile Include="Migrations\202305270300487_InitialDB.designer.cs">
+      <DependentUpon>202305270300487_InitialDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305270356415_TmsShop.cs" />
+    <Compile Include="Migrations\202305270356415_TmsShop.designer.cs">
+      <DependentUpon>202305270356415_TmsShop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305270402036_InitDB1.cs" />
+    <Compile Include="Migrations\202305270402036_InitDB1.designer.cs">
+      <DependentUpon>202305270402036_InitDB1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305270407582_Update.cs" />
+    <Compile Include="Migrations\202305270407582_Update.designer.cs">
+      <DependentUpon>202305270407582_Update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Respositories\BillDetailRepository.cs" />
+    <Compile Include="Respositories\BillRepository.cs" />
+    <Compile Include="Respositories\CategoryRepository.cs" />
+    <Compile Include="Respositories\ColorRepository.cs" />
+    <Compile Include="Respositories\ImageRepository.cs" />
+    <Compile Include="Respositories\ProductDetailRepository.cs" />
+    <Compile Include="Respositories\ProductRepository.cs" />
+    <Compile Include="Respositories\SizeRepository.cs" />
+    <Compile Include="Respositories\UserRepository.cs" />
+    <Compile Include="Respositories\UserRoleRepository.cs" />
     <Compile Include="TmsMysticShopDbContext.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -73,7 +103,18 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Respositories\" />
+    <EmbeddedResource Include="Migrations\202305270300487_InitialDB.resx">
+      <DependentUpon>202305270300487_InitialDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305270356415_TmsShop.resx">
+      <DependentUpon>202305270356415_TmsShop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305270402036_InitDB1.resx">
+      <DependentUpon>202305270402036_InitDB1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305270407582_Update.resx">
+      <DependentUpon>202305270407582_Update.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
