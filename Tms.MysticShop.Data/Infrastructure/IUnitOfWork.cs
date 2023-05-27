@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tms.MysticShop.Data
+namespace Tms.MysticShop.Data.Infrastructure
 {
-    public class Class1
+    public interface IUnitOfWork
     {
+        void Commit();
     }
 }
