@@ -52,7 +52,6 @@ namespace Tms.MysticShop.Web.App_Start
                 .Where(c => c.Name.EndsWith("Service"))
                 .AsImplementedInterfaces().InstancePerRequest();
 
-            builder.RegisterAssemblyTypes<IUserRoleService, UserRoleService>();
 
             Autofac.IContainer container = builder.Build();
 
