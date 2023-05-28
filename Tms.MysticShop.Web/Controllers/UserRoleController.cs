@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Tms.MysticShop.Service.Service;
 using Tms.MysticShop.Web.Infrastructure.Core;
 
 namespace Tms.MysticShop.Web.Controllers
@@ -11,16 +12,17 @@ namespace Tms.MysticShop.Web.Controllers
     [RoutePrefix("api/UserRole")]
     public class UserRoleController : ApiControllerBase
     {
-        [HttpGet]
-        public IEnumerable<string> Get()
+        IUserRoleService _userRoleService;
+        public UserRoleController(IUserRoleService userRoleService)
         {
-            return new string[] { "valie1", "valie2" };
+            this._userRoleService = userRoleService;
         }
 
-        [Route("GetAll")]
-        public HttpResponseMessage Get1()
+        [HttpGet]
+        public HttpResponseMessage Get()
         {
-            return new HttpResponseMessage();
+            var check = _userRoleService.GetAll();
+            return Request.CreateResponse(HttpStatusCode.OK, check);
         }
     }
 }

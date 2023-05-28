@@ -55,6 +55,9 @@
     <Reference Include="Autofac.Integration.WebApi, Version=6.1.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <HintPath>..\packages\Autofac.WebApi2.6.1.1\lib\net472\Autofac.Integration.WebApi.dll</HintPath>
     </Reference>
+    <Reference Include="AutoMapper, Version=4.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.2.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -181,6 +184,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BillDetailController.cs" />
     <Compile Include="Controllers\BillsController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
@@ -195,9 +199,104 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\Core\ApiControllerBase.cs" />
+    <Compile Include="Mappings\AutoMapperConfiguration.cs" />
+    <Compile Include="Models\BillDetailViewModel.cs" />
+    <Compile Include="Models\BillViewModel.cs" />
+    <Compile Include="Models\CategoryViewModel.cs" />
+    <Compile Include="Models\ColorViewModel.cs" />
+    <Compile Include="Models\ImageViewModel.cs" />
+    <Compile Include="Models\ProductDetailViewModel.cs" />
+    <Compile Include="Models\ProductViewModel.cs" />
+    <Compile Include="Models\SizeViewModel.cs" />
+    <Compile Include="Models\UserRoleViewModel.cs" />
+    <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\app.js" />
+    <Content Include="app\components\bills\bill.router.js" />
+    <Content Include="app\components\bills\billAddController.js" />
+    <Content Include="app\components\bills\billAddView.html" />
+    <Content Include="app\components\bills\billEditController.js" />
+    <Content Include="app\components\bills\billEditView.html" />
+    <Content Include="app\components\bills\billListController.js" />
+    <Content Include="app\components\bills\billListView.html" />
+    <Content Include="app\components\home\homeController.js" />
+    <Content Include="app\components\home\homeView.html" />
+    <Content Include="app\shared\modules\tmsmysticshop.common.js" />
+    <Content Include="Assets\css\adminlte.css" />
+    <Content Include="Assets\css\adminlte.min.css" />
+    <Content Include="Assets\css\alt\adminlte.components.css" />
+    <Content Include="Assets\css\alt\adminlte.components.min.css" />
+    <Content Include="Assets\css\alt\adminlte.core.css" />
+    <Content Include="Assets\css\alt\adminlte.core.min.css" />
+    <Content Include="Assets\css\alt\adminlte.extra-components.css" />
+    <Content Include="Assets\css\alt\adminlte.extra-components.min.css" />
+    <Content Include="Assets\css\alt\adminlte.light.css" />
+    <Content Include="Assets\css\alt\adminlte.light.min.css" />
+    <Content Include="Assets\css\alt\adminlte.pages.css" />
+    <Content Include="Assets\css\alt\adminlte.pages.min.css" />
+    <Content Include="Assets\css\alt\adminlte.plugins.css" />
+    <Content Include="Assets\css\alt\adminlte.plugins.min.css" />
+    <Content Include="Assets\img\AdminLTELogo.png" />
+    <Content Include="Assets\img\avatar.png" />
+    <Content Include="Assets\img\avatar2.png" />
+    <Content Include="Assets\img\avatar3.png" />
+    <Content Include="Assets\img\avatar4.png" />
+    <Content Include="Assets\img\avatar5.png" />
+    <Content Include="Assets\img\credit\american-express.png" />
+    <Content Include="Assets\img\credit\cirrus.png" />
+    <Content Include="Assets\img\credit\mastercard.png" />
+    <Content Include="Assets\img\credit\paypal.png" />
+    <Content Include="Assets\img\credit\paypal2.png" />
+    <Content Include="Assets\img\credit\visa.png" />
+    <Content Include="Assets\img\default-150x150.png" />
+    <Content Include="Assets\img\icons.png" />
+    <Content Include="Assets\img\photo1.png" />
+    <Content Include="Assets\img\photo2.png" />
+    <Content Include="Assets\img\photo3.jpg" />
+    <Content Include="Assets\img\photo4.jpg" />
+    <Content Include="Assets\img\prod-1.jpg" />
+    <Content Include="Assets\img\prod-2.jpg" />
+    <Content Include="Assets\img\prod-3.jpg" />
+    <Content Include="Assets\img\prod-4.jpg" />
+    <Content Include="Assets\img\prod-5.jpg" />
+    <Content Include="Assets\img\user1-128x128.jpg" />
+    <Content Include="Assets\img\user2-160x160.jpg" />
+    <Content Include="Assets\img\user3-128x128.jpg" />
+    <Content Include="Assets\img\user4-128x128.jpg" />
+    <Content Include="Assets\img\user5-128x128.jpg" />
+    <Content Include="Assets\img\user6-128x128.jpg" />
+    <Content Include="Assets\img\user7-128x128.jpg" />
+    <Content Include="Assets\img\user8-128x128.jpg" />
+    <Content Include="Assets\js\adminlte.js" />
+    <Content Include="Assets\js\adminlte.min.js" />
+    <Content Include="Assets\js\demo.js" />
+    <Content Include="Assets\js\pages\dashboard.js" />
+    <Content Include="Assets\js\pages\dashboard2.js" />
+    <Content Include="Assets\js\pages\dashboard3.js" />
+    <Content Include="Assets\libs\bootstrap\js\bootstrap.bundle.js" />
+    <Content Include="Assets\libs\bootstrap\js\bootstrap.bundle.min.js" />
+    <Content Include="Assets\libs\bootstrap\js\bootstrap.js" />
+    <Content Include="Assets\libs\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Assets\libs\fontware-some\all.css" />
+    <Content Include="Assets\libs\fontware-some\all.min.css" />
+    <Content Include="Assets\libs\fontware-some\brands.css" />
+    <Content Include="Assets\libs\fontware-some\brands.min.css" />
+    <Content Include="Assets\libs\fontware-some\fontawesome.css" />
+    <Content Include="Assets\libs\fontware-some\fontawesome.min.css" />
+    <Content Include="Assets\libs\fontware-some\regular.css" />
+    <Content Include="Assets\libs\fontware-some\regular.min.css" />
+    <Content Include="Assets\libs\fontware-some\solid.css" />
+    <Content Include="Assets\libs\fontware-some\solid.min.css" />
+    <Content Include="Assets\libs\fontware-some\svg-with-js.css" />
+    <Content Include="Assets\libs\fontware-some\svg-with-js.min.css" />
+    <Content Include="Assets\libs\fontware-some\v4-shims.css" />
+    <Content Include="Assets\libs\fontware-some\v4-shims.min.css" />
+    <Content Include="Assets\libs\jquery\jquery.js" />
+    <Content Include="Assets\libs\jquery\jquery.min.js" />
+    <Content Include="Assets\libs\jquery\jquery.slim.js" />
+    <Content Include="Assets\libs\jquery\jquery.slim.min.js" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -223,6 +322,29 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Assets\css\adminlte.css.map" />
+    <Content Include="Assets\css\adminlte.min.css.map" />
+    <Content Include="Assets\css\alt\adminlte.components.css.map" />
+    <Content Include="Assets\css\alt\adminlte.components.min.css.map" />
+    <Content Include="Assets\css\alt\adminlte.core.css.map" />
+    <Content Include="Assets\css\alt\adminlte.core.min.css.map" />
+    <Content Include="Assets\css\alt\adminlte.extra-components.css.map" />
+    <Content Include="Assets\css\alt\adminlte.extra-components.min.css.map" />
+    <Content Include="Assets\css\alt\adminlte.light.css.map" />
+    <Content Include="Assets\css\alt\adminlte.light.min.css.map" />
+    <Content Include="Assets\css\alt\adminlte.pages.css.map" />
+    <Content Include="Assets\css\alt\adminlte.pages.min.css.map" />
+    <Content Include="Assets\css\alt\adminlte.plugins.css.map" />
+    <Content Include="Assets\css\alt\adminlte.plugins.min.css.map" />
+    <Content Include="Assets\js\.eslintrc.json" />
+    <Content Include="Assets\js\adminlte.js.map" />
+    <Content Include="Assets\js\adminlte.min.js.map" />
+    <Content Include="Assets\libs\jquery\jquery.min.map" />
+    <Content Include="Assets\libs\jquery\jquery.slim.min.map" />
+    <Content Include="Assets\libs\bootstrap\js\bootstrap.bundle.js.map" />
+    <Content Include="Assets\libs\bootstrap\js\bootstrap.bundle.min.js.map" />
+    <Content Include="Assets\libs\bootstrap\js\bootstrap.js.map" />
+    <Content Include="Assets\libs\bootstrap\js\bootstrap.min.js.map" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -234,6 +356,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\spa\app.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -248,13 +371,22 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="app\components\bill_details\" />
+    <Folder Include="app\components\categorys\" />
+    <Folder Include="app\components\colors\" />
+    <Folder Include="app\components\images\" />
+    <Folder Include="app\components\products\" />
+    <Folder Include="app\components\product_details\" />
+    <Folder Include="app\components\sizes\" />
+    <Folder Include="app\components\users\" />
+    <Folder Include="app\components\user_roles\" />
+    <Folder Include="app\shared\footer\" />
+    <Folder Include="app\shared\navigation\" />
+    <Folder Include="app\shared\services\" />
     <Folder Include="App_Data\" />
-    <Folder Include="Infrastructure\Extentions\" />
-    <Folder Include="Models\" />
-    <Folder Include="Scripts\plugins\" />
-    <Folder Include="Scripts\spa\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
