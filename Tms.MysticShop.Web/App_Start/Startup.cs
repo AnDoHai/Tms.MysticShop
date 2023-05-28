@@ -52,6 +52,7 @@ namespace Tms.MysticShop.Web.App_Start
                 .Where(c => c.Name.EndsWith("Service"))
                 .AsImplementedInterfaces().InstancePerRequest();
 
+
             Autofac.IContainer container = builder.Build();
 
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));

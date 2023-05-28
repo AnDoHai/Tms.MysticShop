@@ -10,7 +10,7 @@ namespace Tms.MysticShop.Data.Respositories
 {
     public interface IUserRoleRepository : IRepository<UserRole>
     {
-
+        List<UserRole> GetAll();
     }
     public class UserRoleRepository : RepositoryBase<UserRole>, IUserRoleRepository
     {
@@ -18,6 +18,16 @@ namespace Tms.MysticShop.Data.Respositories
            : base(dbFactory)
         {
 
+        }
+
+        public List<UserRole> GetAll()
+        {
+            var dbContext = DbContext.UserRoles;
+            if (dbContext.Count() > 0)
+            {
+                return dbContext.ToList();
+            }
+            return null;
         }
     }
 }
