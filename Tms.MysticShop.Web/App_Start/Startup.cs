@@ -7,6 +7,7 @@ using System;
 using System.EnterpriseServices;
 using System.Reflection;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using Tms.MysticShop.Data;
@@ -37,6 +38,11 @@ namespace Tms.MysticShop.Web.App_Start
 
             builder.RegisterType<InitOfWork>().As<IUnitOfWork>().InstancePerRequest();
             builder.RegisterType<DbFactory>().As<IDbFactory>().InstancePerRequest();
+            builder.Register(c => HttpContext.Current.GetOwinContext().Authentication).InstancePerRequest();
+
+            //builder.RegisterType<UserRoleService>().As<IUserRoleService>().InstancePerRequest();
+
+            //builder.RegisterType<UserRoleRepository>().As<IUserRoleRepository>().InstancePerRequest();
 
 
             //injection dbcontext
@@ -44,13 +50,15 @@ namespace Tms.MysticShop.Web.App_Start
 
             //injection respository
             builder.RegisterAssemblyTypes(typeof(UserRepository).Assembly)
-                .Where(c=>c.Name.EndsWith("Repository"))
+                .Where(c => c.Name.EndsWith("Repository"))
                 .AsImplementedInterfaces().InstancePerRequest();
+
 
             //injection service
             builder.RegisterAssemblyTypes(typeof(UserService).Assembly)
                 .Where(c => c.Name.EndsWith("Service"))
                 .AsImplementedInterfaces().InstancePerRequest();
+
 
 
             Autofac.IContainer container = builder.Build();

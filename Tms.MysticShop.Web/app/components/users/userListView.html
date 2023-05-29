@@ -1,0 +1,77 @@
+﻿<style>
+    th{
+        text-align:center;
+    }
+    button {
+        padding: 3px 6px !important;
+    }
+</style>
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Tài khoản</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Admin</a></li>
+                    <li class="breadcrumb-item active">Quản lí tài khoản</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                    </div>
+                    <div class="card-body">
+                        <table id="example2" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Tên người dùng</th>
+                                    <th>Email</th>
+                                    <th>Điện thoại</th>
+                                    <th>Địa chỉ</th>
+                                    <th>Tên quyền</th>
+                                    <th>Ngày tạo</th>
+                                    <th>Người tạo</th>
+                                    <th>Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in userList">
+                                    <td>1</td>
+                                    <td>{{item.UserName}}</td>
+                                    <td>{{item.Email}}</td>
+                                    <td>{{item.PhoneNumber}}</td>
+                                    <td>{{item.Address}}</td>
+                                    <td>{{item.UserRole.UserRoleName}}</td>
+                                    <td>{{item.CreatedDate | date:'dd/MM/yyyy'}}</td>
+                                    <td>{{item.CreatedBy}}</td>
+                                    <td style="text-align:center">
+                                        <button type="button" class="btn btn-primary">
+                                            <i class="fa-sharp fa-regular fa-pen-to-square"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-danger">
+                                            <i class="fa-sharp fa-solid fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box-footer row">
+            <pager-directive page="{{page}}" custom-path="{{customPath}}" pages-count="{{pagesCount}}" total-count="{{totalCount}}" search-func="getUsers(page)"></pager-directive>
+        </div>
+    </div>
+</section>

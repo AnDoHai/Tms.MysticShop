@@ -15,8 +15,8 @@ namespace Tms.MysticShop.Service.Service
     }
     public class UserRoleService : IUserRoleService
     {
-        private readonly IUserRoleRepository _userRoleRepository;
-        private readonly IUnitOfWork _unitOfWork;
+        private IUserRoleRepository _userRoleRepository;
+        private IUnitOfWork _unitOfWork;
         public UserRoleService(IUserRoleRepository userRoleRepository, IUnitOfWork unitOfWork)
         {
             this._userRoleRepository = userRoleRepository;

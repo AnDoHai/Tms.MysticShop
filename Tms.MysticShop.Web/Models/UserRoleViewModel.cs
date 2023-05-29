@@ -11,6 +11,10 @@ namespace Tms.MysticShop.Web.Models
     {
         public int UserRoleID { get; set; }
         public string UserRoleName { get; set; }
+
+        public DateTime CreatedDate { get; set; }
+        public string CreatedBy { get; set; }
+
         public virtual IEnumerable<UserViewModel> Users { get; set; }
     }
 }
