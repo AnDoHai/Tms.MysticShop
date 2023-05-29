@@ -14,7 +14,7 @@ namespace Tms.MysticShop.Data.Respositories
     }
     public class UserRoleRepository : RepositoryBase<UserRole>, IUserRoleRepository
     {
-        public UserRoleRepository(DbFactory dbFactory)
+        public UserRoleRepository(IDbFactory dbFactory)
            : base(dbFactory)
         {
 
